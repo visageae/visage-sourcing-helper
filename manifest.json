@@ -1,0 +1,39 @@
+{
+  "name": "Visage sourcing helper",
+  "author": "Walt Whitman",
+  "description": "This is a chrome extension to help Visage sourcers when submitting profiles from LinkedIn",
+  "version": "1.1",
+  "background": {
+    "page": "html/background.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*/*","http://*/*"],
+      "js": ["js/jquery-3.1.1.min.js", "js/contentscript.js"],
+      "all_frames": true,
+      "run_at":  "document_end"
+    }
+  ],
+  "permissions": [
+    "tabs", "*://*/"
+  ],
+  "browser_action": {
+      "default_title": "",
+      "default_popup" :"html/popup.html"
+  },
+  "icons": {
+  },
+  "commands": {
+    "paste-profile-data": {
+      "suggested_key": {
+        "default": "Alt+V",
+        "windows":  "Alt+V",
+        "mac":  "Alt+V",
+        "chromeos":  "Alt+V",
+        "linux":  "Alt+V"
+      },
+      "description": "Paste profile data"
+    }
+  },
+  "manifest_version": 2
+}

@@ -1,0 +1,26 @@
+{
+  "name": "visage-sourcing-helper",
+  "homepage": "https://github.com/visageae/visage-sourcing-helper",
+  "authors": [
+    "Basheer Ahmad <ahmad.basheer89@outlook.com>"
+  ],
+  "description": "chrome extension to help visage sourcers when submitting profiles from LinkedIn",
+  "main": "",
+  "keywords": [
+    "visage",
+    "sourcer",
+    "linkedin"
+  ],
+  "dependencies" : {
+    "jquery": "^3.1.1",
+    "bootstrap": "^v3.3.7"
+  },
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

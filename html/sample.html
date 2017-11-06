@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form accessible-form="" name="submissionForm" ng-submit="submissionForm.$valid &amp;&amp; submit()" id="submissionForm"
+      class="ng-invalid ng-invalid-required ng-valid-url ng-valid-minlength ng-valid-maxlength ng-valid-selected-item ng-dirty ng-valid-max-height ng-valid-min-height ng-valid-max-width ng-valid-min-width ng-valid-dimensions ng-valid-ratio ng-valid-max-ratio ng-valid-min-ratio ng-valid-max-duration ng-valid-min-duration ng-valid-duration ng-valid-validate-async-fn ng-valid-parse ng-valid-existing ng-valid-unreachbale ng-valid-email-validation ng-valid-email">
+    <md-toolbar class="_md _md-toolbar-transitions">
+        <div class="md-toolbar-tools"> <!-- ngIf: referrer --><h2 ng-if="referrer" class="ng-scope">Refer a
+            candidate</h2><!-- end ngIf: referrer --> <!-- ngIf: !referrer --> <span flex="" class="flex"></span>
+            <button class="md-icon-button md-button md-ink-ripple" type="button" ng-transclude="" ng-click="hide()">
+                <md-icon aria-label="Close dialog" class="ng-scope material-icons" role="img">close</md-icon>
+            </button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content id="dialogContent_59">
+        <div class="md-dialog-content">
+            <announcement id="candidate-submitted-success" ng-show="previousSubmission" aria-hidden="true"
+                          class="ng-hide">
+                <div layout="row" layout-align="start center"
+                     class="announcement md-padding md-whiteframe-z2 layout-align-start-center layout-row">
+                    <div class="announcement-image hide show-gt-md" hide="" show-gt-md="">
+                        <md-icon class="material-icons" role="img" aria-label="info_outline">info_outline</md-icon>
+                    </div>
+                    <div flex="" class="announcement-details layout-column flex" layout="column">
+                        <ng-transclude> Your candidate has been submitted. His profile will be reviewed and you will get
+                            paid next week if he is validated
+                        </ng-transclude>
+                    </div>
+                </div>
+            </announcement>
+            <div ng-show="!conditions.limitReached || !referrer" layout="column" class="layout-column"
+                 aria-hidden="false">
+                <div layout="column" layout-align="start center" layout-align-gt-md="start start" layout-gt-md="row"
+                     class="layout-gt-md-row layout-align-gt-md-start-start layout-align-start-center layout-column"><h2
+                        class="md-headline ng-binding flex-order-gt-md-1 flex-order-3" flex-order="3"
+                        flex-order-gt-md="1"> Staff Software Engineer, Web applications</h2> <span flex-gt-md=""
+                                                                                                   flex-order-gt-md="2"
+                                                                                                   class="flex-order-gt-md-2 flex-gt-md"></span>
+                    <!-- ngIf: assignment --> </div>
+            </div> <!-- ngIf: assignment --> <!-- ngIf: !conditions.limitReached -->
+            <candidate-edit ng-if="!conditions.limitReached" job="job" referrer="referrer"
+                            candidate-submission="candidateSubmission" form-mode="submission" form="submissionForm"
+                            form-controls="formControls" progress-mode="progressMode"
+                            progress-determinate-value="progressDeterminateValue" progress-show="progressShow"
+                            class="ng-scope ng-isolate-scope">
+                <form accessible-form="" name="form" ng-submit="form.$valid &amp;&amp; submit()" id="form"
+                      class="ng-invalid ng-invalid-required ng-valid-url ng-valid-minlength ng-valid-maxlength ng-valid-selected-item ng-dirty ng-valid-max-height ng-valid-min-height ng-valid-max-width ng-valid-min-width ng-valid-dimensions ng-valid-ratio ng-valid-max-ratio ng-valid-min-ratio ng-valid-max-duration ng-valid-min-duration ng-valid-duration ng-valid-validate-async-fn ng-valid-parse ng-valid-existing ng-valid-unreachbale ng-valid-email-validation ng-valid-email">
+                    <div ng-messages="form.$error" ng-show="isFirstStep()" aria-live="assertive"
+                         class="ng-active ng-hide" aria-hidden="true"><p class="md-subhead">Upload CV</p>
+                        <!-- ngMessage: required -->
+                        <div ng-message="required" ng-show="form.$submitted" class="field-error ng-scope ng-hide"
+                             aria-hidden="true">Please check the error on the form before submitting.
+                        </div>
+                        <div ng-show="form.$error.maximumSubmissions" class="field-error ng-hide" aria-hidden="true">
+                            Maximum submissions number reached for this vacancy
+                        </div>
+                        <div ng-show="form.$error.existing" class="field-error ng-hide" aria-hidden="true">This
+                            candidate has already been submitted for this vacancy
+                        </div>
+                        <div ng-show="form.$error.unreachable" class="field-error ng-hide" aria-hidden="true">This
+                            candidate doesn't want to be contacted
+                        </div>
+                        <div ng-show="form.$error.cvValidation" class="field-error ng-binding ng-hide"
+                             aria-hidden="true"></div>
+                        <file-uploader ng-hide="form.$error.maximumSubmissions"
+                                       file="candidateSubmission.candidate.candidate.cv"
+                                       file-upload-success="cvUploadSuccess({ newFile: newFile })"
+                                       file-upload-error="checkError({ response: response })"
+                                       file-upload-on-change="true" media-type="cvMediaType" required="true"
+                                       progress-mode="progressMode"
+                                       progress-determinate-value="progressDeterminateValue"
+                                       progress-show="progressShow" class="ng-isolate-scope" aria-hidden="false">
+                            <div flex="" class="flex">
+                                <md-progress-linear ng-show="progressDeterminateValue" md-mode="determinate" value=""
+                                                    aria-valuemin="0" aria-valuemax="100" role="progressbar"
+                                                    class="ng-hide" aria-valuenow="0" aria-hidden="true">
+                                    <div class="md-container md-mode-determinate">
+                                        <div class="md-dashed"></div>
+                                        <div class="md-bar md-bar1"></div>
+                                        <div class="md-bar md-bar2"
+                                             style="transform: translateX(-50%) scale(0, 1);"></div>
+                                    </div>
+                                </md-progress-linear>
+                                <div ng-show="file &amp;&amp; !file.deleted" flex="" class="flex" aria-hidden="false">
+                                    <div layout="row" class="uploaded layout-row"><span
+                                            class="md-body-1 md-padding ng-binding"> Uploaded : HannahJeonProfile.pdf </span>
+                                        <span flex="" class="flex"></span>
+                                        <md-progress-circular ng-show="pendingDeletion" md-mode="indeterminate"
+                                                              aria-valuemin="0" aria-valuemax="100" role="progressbar"
+                                                              class="ng-isolate-scope md-mode-indeterminate ng-hide"
+                                                              aria-hidden="true" style="width: 50px; height: 50px;">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"
+                                                 style="width: 50px; height: 50px; transform-origin: 25px 25px 25px;">
+                                                <path fill="none" stroke-width="5" stroke-linecap="square"
+                                                      d="M25,2.5A22.5,22.5 0 1 1 2.5,25"
+                                                      stroke-dasharray="106.02875205865553"
+                                                      stroke-dashoffset="140.3274570446929"
+                                                      transform="rotate(-270 25 25)"></path>
+                                            </svg>
+                                        </md-progress-circular>
+                                        <button class="md-warn md-button md-ink-ripple" type="button" ng-transclude=""
+                                                ng-click="fileDelete()"> Remove
+                                        </button>
+                                    </div>
+                                </div>
+                                <div ng-show="file.deleted" flex="" class="flex ng-hide" aria-hidden="true">
+                                    <div layout="row" class="uploaded layout-row"><span class="md-body-1 md-padding"> This image has been deleted. Please upload a new image. </span>
+                                        <span flex="" class="flex"></span>
+                                        <button class="md-primary md-button md-ink-ripple" type="button"
+                                                ng-transclude="" ng-click="fileRestart()"> Upload New Image
+                                        </button>
+                                    </div>
+                                </div>
+                                <div flex="" ng-hide="file" class="flex ng-hide" aria-hidden="true">
+                                    <div ng-show="fileGeneralError" class="field-error ng-binding ng-hide"
+                                         aria-hidden="true"></div>
+                                    <div ng-disabled="progressDeterminateValue" ngf-drop="fileUpload()"
+                                         ngf-select="fileUpload()" name="drop" ng-model="rawFile"
+                                         class="upload-zone ng-untouched layout-fill ng-dirty ng-valid-max-height ng-valid-min-height ng-valid-max-width ng-valid-min-width ng-valid-dimensions ng-valid-ratio ng-valid-max-ratio ng-valid-min-ratio ng-valid-max-duration ng-valid-min-duration ng-valid-duration ng-valid-validate-async-fn ng-not-empty ng-valid-parse ng-valid ng-valid-required"
+                                         layout-fill="" ngf-drag-over-class="'dragover'" ngf-multiple="false"
+                                         ngf-allow-dir="false" accept="application/pdf,.doc,.docx,.odt,image/*"
+                                         ngf-pattern="'application/pdf,.doc,.docx,.odt,image/*'" ngf-max-files="1"
+                                         ngf-max-size="10MB" ng-required="required" aria-required="true"
+                                         aria-disabled="false" required="required" aria-invalid="false">
+                                        <div layout="column" layout-align-gt-sm="center center"
+                                             class="layout-align-gt-sm-center-center layout-column"><p
+                                                class="md-body-1">Drop your file here</p>
+                                            <p class="md-body-1">OR</p>
+                                            <button class="md-raised md-primary md-button md-ink-ripple" type="button"
+                                                    ng-transclude="">upload
+                                            </button>
+                                        </div>
+                                        <div ngf-no-file-drop="" style="display: none;">File Drag/Drop is not supported
+                                            for this browser
+                                        </div>
+                                        <div layout="row" class="layout-row"><span class="md-caption ng-binding">Max size: 10MB </span>
+                                            <span flex="" class="flex"></span> <span class="md-caption ng-binding">Format: pdf, doc, docx, .png, jpg, .odt</span>
+                                        </div>
+                                    </div>
+                                </div> <!-- ngIf: form --> <!-- ngIf: form --> </div>
+                        </file-uploader>
+                    </div> <!-- ngIf: isSecondStep() -->
+                    <div ng-show="isThirdStep()" aria-hidden="false" class="">
+                        <div layout="row" class="layout-row">
+                            <md-input-container flex="" class="flex md-input-has-value"><label for="email"
+                                                                                               class="md-required">Candidate
+                                email</label> <input ng-required="emailRequired" type="email" name="email"
+                                                     ng-change="emailChanged()"
+                                                     ng-model="candidateSubmission.candidate.candidate.defaultEmail"
+                                                     id="email"
+                                                     class="ng-pristine md-input ng-valid-email-validation ng-not-empty ng-valid-email ng-valid ng-valid-required ng-touched"
+                                                     required="required" aria-invalid="false">
+                                <div class="md-errors-spacer"></div>
+                                <div ng-messages="form.email.$error" ng-show="form.$submitted || form.email.$touched"
+                                     class="md-input-messages-animation ng-inactive" aria-live="assertive"
+                                     aria-hidden="false">
+                                    <div ng-show="form.email.$error.required" class="field-error ng-hide"
+                                         aria-hidden="true">This field is mandatory
+                                    </div>
+                                    <div ng-show="form.email.$error.email" class="field-error ng-hide"
+                                         aria-hidden="true">Invalid format
+                                    </div>
+                                    <div ng-show="form.email.$error.emailValidation"
+                                         class="field-error ng-binding ng-hide" aria-hidden="true"></div>
+                                </div>
+                            </md-input-container>
+                        </div> <!-- ngIf: isAdmin --> <!-- ngIf: isAdmin -->
+                        <div layout="row" class="layout-row">
+                            <md-input-container flex-gt-sm="" class="flex-gt-sm md-input-invalid"><label for="name"
+                                                                                                         class="md-required">Name</label>
+                                <input ng-model="candidateSubmission.candidate.candidate.name" id="name" name="name"
+                                       ng-required="true" type="text"
+                                       class="ng-pristine md-input ng-empty ng-invalid ng-invalid-required ng-touched"
+                                       required="required" aria-invalid="true">
+                                <div class="md-errors-spacer"></div>
+                                <div ng-messages="form.name.$error" ng-show="form.$submitted || form.name.$touched"
+                                     class="md-input-messages-animation ng-inactive" aria-live="assertive"
+                                     aria-hidden="false">
+                                    <div ng-show="form.name.$error.required" class="field-error" aria-hidden="false">
+                                        This field is mandatory
+                                    </div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                        <div layout="column" class="layout-column"><p class="md-body-2"
+                                                                      md-colors="{color: 'default-accent-A200'}"
+                                                                      style="color: rgb(255, 193, 7);">New(Optional) :
+                            Paste your candidate's LinkedIn profile and increase your success rate!</p>
+                            <md-input-container class=""><label for="linkedInProfile">LinkedIn Profile</label> <input
+                                    ng-model="candidateSubmission.candidate.candidate.linkedInProfile"
+                                    id="linkedInProfile" name="linkedInProfile" type="url"
+                                    class="ng-pristine ng-valid md-input ng-empty ng-valid-url ng-touched"
+                                    aria-invalid="false">
+                                <div class="md-errors-spacer"></div>
+                                <div ng-messages="form.linkedInProfile.$error"
+                                     ng-show="form.$submitted || form.linkedInProfile.$touched"
+                                     class="md-input-messages-animation ng-inactive" aria-live="assertive"
+                                     aria-hidden="false">
+                                    <div ng-show="form.linkedInProfile.$error.url" class="field-error ng-hide"
+                                         aria-hidden="true">The LinkedIn profile must be a valid URL
+                                    </div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                        <div layout-gt-sm="row" class="layout-gt-sm-row">
+                            <md-input-container class="md-block flex-gt-sm md-input-invalid" flex-gt-sm=""><label
+                                    for="jobTitle" class="md-required"><i
+                                    class="chrome-extension-mutihighlight chrome-extension-mutihighlight-style-2">Current</i>
+                                job title</label> <input ng-required="true"
+                                                         ng-model="candidateSubmission.candidate.candidate.jobTitle"
+                                                         name="jobTitle" id="jobTitle" type="text"
+                                                         class="ng-pristine md-input ng-empty ng-invalid ng-invalid-required ng-touched"
+                                                         required="required" aria-invalid="true">
+                                <div class="md-errors-spacer"></div>
+                                <div ng-messages="form.jobTitle.$error"
+                                     ng-show="form.$submitted || form.jobTitle.$touched"
+                                     class="md-input-messages-animation ng-inactive" aria-live="assertive"
+                                     aria-hidden="false">
+                                    <div ng-show="form.jobTitle.$error.required" class="field-error"
+                                         aria-hidden="false">This field is mandatory
+                                    </div>
+                                </div>
+                            </md-input-container>
+                            <md-input-container class="md-block flex-gt-sm md-input-invalid" flex-gt-sm=""><label
+                                    for="employer" class="md-required"><i
+                                    class="chrome-extension-mutihighlight chrome-extension-mutihighlight-style-2">Current</i>
+                                employer</label> <input ng-required="true"
+                                                        ng-model="candidateSubmission.candidate.candidate.employer"
+                                                        name="employer" id="employer" type="text"
+                                                        class="ng-pristine md-input ng-empty ng-invalid ng-invalid-required ng-touched"
+                                                        required="required" aria-invalid="true">
+                                <div class="md-errors-spacer"></div>
+                                <div ng-messages="form.employer.$error"
+                                     ng-show="form.$submitted || form.employer.$touched"
+                                     class="md-input-messages-animation ng-inactive" aria-live="assertive"
+                                     aria-hidden="false">
+                                    <div ng-show="form.employer.$error.required" class="field-error"
+                                         aria-hidden="false">This field is mandatory
+                                    </div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                        <div layout="row" class="layout-row">
+                            <md-autocomplete class="md-block ng-isolate-scope flex-gt-sm" ng-required="true"
+                                             flex-gt-sm="" md-input-name="location"
+                                             md-selected-item="candidateSubmission.candidate.candidate.location"
+                                             md-search-text="searchTextLocation"
+                                             md-items="location in locationQuerySearch(searchTextLocation)"
+                                             md-item-text="location" md-floating-label="Country of residence"
+                                             md-autocomplete-required="" md-has-not-found="true" tabindex="-1"
+                                             aria-required="true" required="required">
+                                <md-autocomplete-wrap
+                                        ng-class="{ 'md-whiteframe-z1': !floatingLabel,                         'md-menu-showing': !$mdAutocompleteCtrl.hidden,                         'md-show-clear-button': !!clearButton }">
+                                    <!-- ngIf: floatingLabel -->
+                                    <md-input-container ng-if="floatingLabel" class="ng-scope md-input-invalid"><label
+                                            class="ng-binding md-required"
+                                            for="{{ inputId || 'fl-input-' + $mdAutocompleteCtrl.id }}">Country of
+                                        residence</label> <input type="search" id="fl-input-60" name="location"
+                                                                 autocomplete="off"
+                                                                 ng-required="$mdAutocompleteCtrl.isRequired"
+                                                                 ng-readonly="$mdAutocompleteCtrl.isReadonly"
+                                                                 ng-disabled="$mdAutocompleteCtrl.isDisabled"
+                                                                 ng-model="$mdAutocompleteCtrl.scope.searchText"
+                                                                 ng-model-options="{ allowInvalid: true }"
+                                                                 ng-keydown="$mdAutocompleteCtrl.keydown($event)"
+                                                                 ng-blur="$mdAutocompleteCtrl.blur($event)"
+                                                                 ng-focus="$mdAutocompleteCtrl.focus($event)"
+                                                                 aria-owns="ul-60" aria-label="Country of residence"
+                                                                 aria-autocomplete="list" role="combobox"
+                                                                 aria-haspopup="true" aria-activedescendant=""
+                                                                 aria-expanded="false"
+                                                                 class="ng-pristine md-input ng-empty ng-invalid ng-invalid-required ng-valid-minlength ng-valid-maxlength ng-valid-selected-item ng-touched"
+                                                                 required="required" aria-invalid="true">
+                                        <div class="md-errors-spacer"></div>
+                                        <!-- mdAutocompleteParentScope: -->
+                                        <div md-autocomplete-parent-scope="" md-autocomplete-replace=""
+                                             class="ng-scope">
+                                            <div ng-messages="form.location.$error"
+                                                 ng-show="form.$submitted || form.location.$touched"
+                                                 class="md-input-messages-animation ng-inactive" aria-live="assertive"
+                                                 aria-hidden="false">
+                                                <div ng-show="form.location.$error.selectedItem"
+                                                     class="field-error ng-hide" aria-hidden="true">Invalid location
+                                                    selected
+                                                </div>
+                                                <div ng-show="form.location.$error.required" class="field-error"
+                                                     aria-hidden="false">This field is mandatory
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </md-input-container><!-- end ngIf: floatingLabel -->
+                                    <!-- ngIf: clearButton && $mdAutocompleteCtrl.scope.searchText -->
+                                    <!-- ngIf: $mdAutocompleteCtrl.loadingIsVisible() -->
+                                </md-autocomplete-wrap>
+                            </md-autocomplete>
+                            <md-input-container class=""><label for="city">City</label> <input
+                                    ng-model="candidateSubmission.candidate.candidate.city" id="city" type="text"
+                                    class="ng-pristine ng-valid md-input ng-empty ng-touched" aria-invalid="false">
+                                <div class="md-errors-spacer"></div>
+                            </md-input-container>
+                        </div>
+                    </div> <!-- ngIf: isSubmissionMode -->
+                    <div ng-if="isSubmissionMode" class="ng-scope"> <!-- ngIf: conditions.limitReached --> </div>
+                    <!-- end ngIf: isSubmissionMode --> </form>
+            </candidate-edit><!-- end ngIf: !conditions.limitReached --> <!-- ngIf: conditions.limitReached --> </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row" class="layout-row">
+        <md-progress-circular class="md-padding center-block ng-isolate-scope md-mode-indeterminate ng-hide"
+                              ng-show="progressShow || progressDeterminateValue" md-mode="indeterminate" value="0"
+                              aria-valuemin="0" aria-valuemax="100" role="progressbar" aria-hidden="true"
+                              style="width: 50px; height: 50px;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"
+                 style="width: 50px; height: 50px; transform-origin: 25px 25px 25px;">
+                <path fill="none" stroke-width="5" stroke-linecap="square" d="M25,2.5A22.5,22.5 0 1 1 2.5,25"
+                      stroke-dasharray="106.02875205865553" stroke-dashoffset="128.38964225369605"
+                      transform="rotate(-270 25 25)"></path>
+            </svg>
+        </md-progress-circular>
+        <!--<md-button href="http://en.wikipedia.org/wiki/Mango" target="_blank" md-autofocus>-->
+        <!--<md-icon>help</md-icon>--> <!--<span style="margin-left: 10px;">Job requirements</span>-->
+        <!--</md-button>-->
+        <button class="md-button md-ink-ripple" type="button" ng-transclude="" ng-click="hide()"> Close</button>
+        <!-- ngIf: formControls.next --> <!-- ngIf: !conditions.limitReached && formControls.submit -->
+        <button class="md-primary md-button ng-scope md-ink-ripple" type="submit" ng-transclude=""
+                ng-if="!conditions.limitReached &amp;&amp; formControls.submit"
+                ng-disabled="progressDeterminateValue || progressShow" style="margin-right:20px"> Submit
+        </button><!-- end ngIf: !conditions.limitReached && formControls.submit --> </md-dialog-actions>
+</form>
+</body>
+</html>
